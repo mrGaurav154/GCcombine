@@ -79,12 +79,18 @@
 .globe-logo-face {
   position: absolute;
   inset: 0;
-  background-color: transparent;
+  border-radius: 50%;
+  background-color: #060b19;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 85% 85%;
   backface-visibility: hidden;
-  filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.5)) drop-shadow(0 0 24px rgba(124, 58, 237, 0.25));
+  box-shadow:
+    0 0 35px 5px rgba(37, 99, 235, 0.35),
+    0 0 70px 15px rgba(124, 58, 237, 0.2),
+    inset -10px -10px 25px rgba(0, 0, 0, 0.15),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
 .globe-logo-face.front {
@@ -96,7 +102,15 @@
 }
 
 .globe-logo-shine {
-  display: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
+  box-shadow: 
+    inset -10px -10px 24px rgba(0, 0, 0, 0.7),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .globe-ring {
