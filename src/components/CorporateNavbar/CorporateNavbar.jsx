@@ -49,25 +49,22 @@ export default function CorporateNavbar() {
   }, []);
 
   const navLinkClass = ({ isActive }) =>
-    `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-      isActive ? 'text-primary' : 'text-text-primary hover:text-primary'
+    `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive ? 'text-primary' : 'text-text-primary hover:text-primary'
     }`;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'py-2' : 'py-4'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-2' : 'py-4'
+        }`}
     >
       <div className="container-px">
         <div
-          className={`mx-auto max-w-7xl flex items-center justify-between rounded-2xl transition-all duration-500 ${
-            scrolled
-              ? 'glass shadow-lg shadow-black/5 px-5 py-2.5'
-              : 'bg-white/70 backdrop-blur-sm border border-white/40 px-4 py-2 shadow-sm shadow-black/5'
-          }`}
+          className={`mx-auto w-full max-w-7xl lg:w-fit flex items-center justify-between lg:justify-start gap-4 lg:gap-8 rounded-2xl transition-all duration-500 ${scrolled
+            ? 'glass shadow-lg shadow-black/5 px-5 py-2'
+            : 'bg-white/70 backdrop-blur-sm border border-white/40 px-4 py-1.5 shadow-sm shadow-black/5'
+            }`}
         >
-          <Link to="/" className="flex items-center gap-2 font-display font-extrabold text-xl">
+          <Link to="/" className="flex items-center gap-2 font-display font-extrabold text-xl shrink-0">
             <LogoBadge />
           </Link>
 
@@ -120,7 +117,7 @@ export default function CorporateNavbar() {
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             {/* <Link to="/contact" className="px-4 py-2 rounded-lg text-sm font-semibold text-primary border border-primary/30 hover:bg-primary/5 transition-colors">
               Get in Touch
             </Link> */}

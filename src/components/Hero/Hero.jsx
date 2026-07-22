@@ -4,6 +4,7 @@ import { PlayCircle, ArrowRight, Sparkles } from 'lucide-react';
 import { SiJavascript, SiPython, SiOpenjdk, SiReact, SiSpring, SiMysql, SiDocker } from 'react-icons/si';
 import Counter from '../shared/Counter';
 import { brand } from '../../data/siteData';
+import { useSplash } from '../../context/SplashContext';
 
 const stages = ['Learn', 'Build', 'Interview', 'Get Hired'];
 
@@ -49,6 +50,7 @@ const techBadges = [
 ];
 
 export default function Hero() {
+  const { splashFinished } = useSplash();
   return (
     <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-radial-glow">
       {/* floating decorative icons */}
@@ -65,7 +67,7 @@ export default function Hero() {
           <div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6"
             >
@@ -74,7 +76,7 @@ export default function Hero() {
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               className="font-display font-extrabold text-4xl sm:text-5xl xl:text-[3.4rem] leading-[1.08] tracking-tight text-text-primary"
             >
@@ -83,7 +85,7 @@ export default function Hero() {
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-6 text-lg text-text-secondary max-w-xl leading-relaxed"
             >
@@ -92,7 +94,7 @@ export default function Hero() {
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mt-9 flex flex-wrap items-center gap-4"
             >
@@ -109,7 +111,7 @@ export default function Hero() {
 
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={splashFinished ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
               className="mt-12 grid grid-cols-3 gap-6 max-w-md"
             >
@@ -131,7 +133,7 @@ export default function Hero() {
           {/* Right: video + career path signature element */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={splashFinished ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.94 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
@@ -153,11 +155,11 @@ export default function Hero() {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.4, rotate: 0 }}
-                animate={{
+                animate={splashFinished ? {
                   opacity: b.far ? 0.85 : 1,
                   scale: 1,
                   rotate: [0, 3, 0, -3, 0],
-                }}
+                } : { opacity: 0, scale: 0.4, rotate: 0 }}
                 transition={{
                   opacity: { duration: 0.5, delay: 0.5 + i * 0.09 },
                   scale: { duration: 0.5, delay: 0.5 + i * 0.09, type: 'spring', stiffness: 140 },

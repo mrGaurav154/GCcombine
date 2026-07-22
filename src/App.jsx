@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './hooks/ScrollToTop';
 import SplashScreen from './components/Splash/SplashScreen';
+import { SplashProvider } from './context/SplashContext';
 
 // Corporate / parent site — Home, Services, Industries, About Us, Contact
 import CorporateLayout from './layouts/CorporateLayout';
@@ -23,7 +24,7 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <>
+    <SplashProvider>
       <SplashScreen />
       <ScrollToTop />
       <Routes>
@@ -49,6 +50,6 @@ export default function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </SplashProvider>
   );
 }

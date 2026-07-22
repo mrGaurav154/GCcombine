@@ -13,26 +13,12 @@ const BASE = '/industrial-training';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
 
   useEffect(() => {
-    let lastY = window.scrollY;
-
     const onScroll = () => {
-      const currentY = window.scrollY;
-      setScrolled(currentY > 24);
-
-      if (currentY < 80) {
-        setHidden(false);
-      } else if (currentY > lastY) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-
-      lastY = currentY;
+      setScrolled(window.scrollY > 24);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -48,15 +34,17 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? 'py-2' : 'py-4'
-      } ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
+      }`}
     >
       <div className="container-px">
         <div
-          className={`mx-auto max-w-7xl flex items-center justify-between rounded-2xl transition-all duration-500 ${
-            scrolled ? 'glass shadow-lg shadow-black/5 px-5 py-2.5' : 'bg-transparent px-2 py-2'
+          className={`mx-auto w-full max-w-7xl lg:w-fit flex items-center justify-between lg:justify-start gap-4 lg:gap-8 rounded-2xl transition-all duration-500 ${
+            scrolled
+              ? 'glass shadow-lg shadow-black/5 px-5 py-2'
+              : 'bg-white/70 backdrop-blur-sm border border-white/40 px-4 py-1.5 shadow-sm shadow-black/5'
           }`}
         >
-          <Link to={BASE} className="flex items-center gap-2 font-display font-extrabold text-xl">
+          <Link to={BASE} className="flex items-center gap-2 font-display font-extrabold text-xl shrink-0">
             <LogoBadge />
           </Link>
 
@@ -98,7 +86,7 @@ export default function Navbar() {
             <NavLink to={`${BASE}/student-projects`} className={navLinkClass}>Student Project</NavLink>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <Link to={`${BASE}/contact`} className="px-4 py-2 rounded-lg text-sm font-semibold text-primary border border-primary/30 hover:bg-primary/5 transition-colors">
               Book Demo
             </Link>

@@ -6,8 +6,38 @@ import { StaggerGroup, StaggerItem } from '../../components/shared/Reveal';
 import Companies from '../../components/Companies/Companies';
 import { brand, services } from '../../data/siteData';
 import { industries } from '../../data/corporateData';
+import Globe3D from '../../components/shared/Globe3D';
+import { useSplash } from '../../context/SplashContext';
 
 export default function LandingHome() {
+  const { splashFinished } = useSplash();
+  const titlePart1 = "We build software,";
+  const titlePart2 = "and the engineers behind it.";
+
+  const sentenceVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.035,
+        delayChildren: 0.2,
+      }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 200,
+        damping: 15,
+        duration: 0.15 
+      }
+    }
+  };
+
   return (
     <>
       {/* Hero */}
@@ -19,48 +49,93 @@ export default function LandingHome() {
         </div>
 
         <div className="container-px relative">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-7xl grid lg:grid-cols-12 gap-12 items-center relative">
+            <div className="relative z-20 text-center lg:text-left mx-auto lg:mx-0 max-w-2xl lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6"
+              >
+                <Sparkles size={14} /> Software Studio &middot; IT Training Institute
+              </motion.div>
+
+              <motion.h1
+                variants={sentenceVariants}
+                initial="hidden"
+                animate={splashFinished ? "visible" : "hidden"}
+                className="font-display font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-[1.08] tracking-tight text-text-primary"
+              >
+                {titlePart1.split(" ").map((word, wIdx) => (
+                  <span key={`w1-${wIdx}`} className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, cIdx) => (
+                      <motion.span key={`c1-${wIdx}-${cIdx}`} variants={letterVariants} className="inline-block">
+                        {char}
+                      </motion.span>
+                    ))}
+                    <motion.span variants={letterVariants} className="inline-block">
+                      {"\u00A0"}
+                    </motion.span>
+                  </span>
+                ))}
+                <span className="text-gradient">
+                  {titlePart2.split(" ").map((word, wIdx, arr) => (
+                    <span key={`w2-${wIdx}`} className="inline-block whitespace-nowrap">
+                      {word.split("").map((char, cIdx) => (
+                        <motion.span key={`c2-${wIdx}-${cIdx}`} variants={letterVariants} className="inline-block">
+                          {char}
+                        </motion.span>
+                      ))}
+                      {wIdx < arr.length - 1 && (
+                        <motion.span variants={letterVariants} className="inline-block">
+                          {"\u00A0"}
+                        </motion.span>
+                      )}
+                    </span>
+                  ))}
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                transition={{ duration: 0.6, delay: 1.7 }}
+                className="mt-6 text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              >
+                Globe Creater partners with businesses across High Tech, Healthcare, Manufacturing,
+                Financial Services and the Public Sector to deliver custom software — and trains the
+                next generation of developers through our Industrial Training programs.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={splashFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                transition={{ duration: 0.6, delay: 1.9 }}
+                className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+              >
+                <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-semibold bg-primary hover:bg-primary-dark transition-colors">
+                  Talk to Us <ArrowRight size={18} />
+                </Link>
+                <Link to="/industrial-training" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-text-primary border border-slate-200 hover:border-primary/40 hover:text-primary transition-colors bg-white/70">
+                  Explore Industrial Training
+                </Link>
+              </motion.div>
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6"
+              initial={{ x: "-120vw", opacity: 0 }}
+              animate={splashFinished ? { x: 0, opacity: 1 } : { x: "-120vw", opacity: 0 }}
+              transition={{ duration: 2.0, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
+              className="absolute inset-0 lg:relative lg:inset-auto flex justify-center items-center pointer-events-none lg:pointer-events-auto z-0 lg:z-10 lg:col-span-5 select-none"
             >
-              <Sparkles size={14} /> Software Studio &middot; IT Training Institute
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-display font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-[1.08] tracking-tight text-text-primary"
-            >
-              We build software, <span className="text-gradient">and the engineers behind it.</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-6 text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed"
-            >
-              Globe Creater partners with businesses across High Tech, Healthcare, Manufacturing,
-              Financial Services and the Public Sector to deliver custom software — and trains the
-              next generation of developers through our Industrial Training programs.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-9 flex flex-wrap items-center justify-center gap-4"
-            >
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-semibold bg-primary hover:bg-primary-dark transition-colors">
-                Talk to Us <ArrowRight size={18} />
-              </Link>
-              <Link to="/industrial-training" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-text-primary border border-slate-200 hover:border-primary/40 hover:text-primary transition-colors bg-white/70">
-                Explore Industrial Training
-              </Link>
+              <div className="opacity-15 lg:opacity-100 transition-opacity duration-300">
+                <div 
+                  className="w-[230px] h-[230px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300" 
+                  style={{ perspective: '1100px' }}
+                >
+                  <Globe3D />
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

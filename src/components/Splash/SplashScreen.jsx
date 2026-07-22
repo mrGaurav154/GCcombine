@@ -1,22 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, stagger } from 'animejs';
 import './splash.css';
+import Globe3D from '../shared/Globe3D';
 
 const SESSION_KEY = 'gc_splash_shown';
 const WORDS = [
   { text: 'Globe', gradient: false },
   { text: 'Creater', gradient: true },
-];
-
-// Longitude rings: flat circles rotated around the Y axis at even steps —
-// each renders as a foreshortened ellipse, giving a real 3D wireframe globe.
-const LONGITUDE_STEPS = [0, 30, 60, 90, 120, 150];
-// Latitude rings: flat circles rotated onto the horizontal plane and offset/
-// scaled to taper towards the poles, like circles of latitude on a globe.
-const LATITUDE_RINGS = [
-  { translateZ: 0, scale: 1 },
-  { translateZ: -36, scale: 0.7 },
-  { translateZ: 36, scale: 0.7 },
 ];
 
 export default function SplashScreen({ onFinish }) {
@@ -52,6 +42,7 @@ export default function SplashScreen({ onFinish }) {
 
     const finishAndClose = () => {
       sessionStorage.setItem(SESSION_KEY, '1');
+      window.dispatchEvent(new Event('gc_splash_finished'));
       animate(rootRef.current, {
         opacity: [1, 0],
         scale: [1, 1.04],
@@ -133,31 +124,7 @@ export default function SplashScreen({ onFinish }) {
       <div className="splash-stars" />
 
       <div className="splash-stage" ref={stageRef}>
-        <div className="globe-3d">
-          {LONGITUDE_STEPS.map((deg) => (
-            <div
-              key={`lon-${deg}`}
-              className="globe-ring lon"
-              style={{ transform: `rotateY(${deg}deg)` }}
-            />
-          ))}
-          {LATITUDE_RINGS.map((r, i) => (
-            <div
-              key={`lat-${i}`}
-              className="globe-ring lat"
-              style={{
-                transform: `rotateX(90deg) translateZ(${r.translateZ}px) scale(${r.scale})`,
-              }}
-            />
-          ))}
-          <div className="globe-core" />
-          <div className="globe-logo-badge">
-            <span className="mark">GC</span>
-          </div>
-          <div className="orbit-ring">
-            <span className="orbit-dot" />
-          </div>
-        </div>
+        <Globe3D />
       </div>
 
       <div className="splash-wordmark" ref={wordmarkRef}>
