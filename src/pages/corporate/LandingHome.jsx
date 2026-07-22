@@ -131,7 +131,7 @@ export default function LandingHome() {
             >
               <div className="opacity-15 lg:opacity-100 transition-opacity duration-300">
                 <div 
-                  className="w-[230px] h-[230px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300" 
+                  className="w-[345px] h-[345px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300" 
                   style={{ perspective: '1100px' }}
                 >
                   <Globe3D />
