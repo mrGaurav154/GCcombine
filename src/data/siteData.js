@@ -10,7 +10,7 @@ export const brand = {
   phone2: '+91 99605 85842',
   email: 'info@globecreater.com',
   address: 'Survey No 127/3, Plot No 12, Mayur Colony, Karve Road, Kothrud, Pune, 411038',
-  founders: 'Sagar Umalkar & Deepak Patil',
+  founders: 'Sagar Umalkar',
   experienceYears: 20,
   social: {
     facebook: 'https://www.facebook.com/globecreater',
@@ -19,7 +19,7 @@ export const brand = {
     linkedin: 'https://www.linkedin.com/company/globe-creater/',
   },
   // heroVideo: "/video/developer-journey.mp4",
-  heroVideo:"/video/video1.mp4",
+  heroVideo: "/video/video1.mp4",
 };
 
 export const stats = [
@@ -230,13 +230,13 @@ export const faculty = [
   {
     initials: 'SU',
     name: 'Sagar Umalkar',
-    role: 'Co-Founder & Java Trainer',
+    role: 'Founder & Java Trainer',
     desc: '20+ years in software training and enterprise delivery.',
   },
   {
     initials: 'DP',
     name: 'Deepak Patil',
-    role: 'Co-Founder & Data Trainer',
+    role: 'Lead Data Trainer',
     desc: 'Leads the Data Science and Analytics curriculum.',
   },
   {

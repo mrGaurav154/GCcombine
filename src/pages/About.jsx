@@ -7,16 +7,32 @@ import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs';
 import Companies from '../components/Companies/Companies';
 import CTA from '../components/CTA/CTA';
 import { brand } from '../data/siteData';
+import sagarUmalkarImg from '../assets/sagar-umalkar.png';
 
 export default function About() {
   return (
     <>
       <section className="relative pt-32 pb-16 bg-gradient-radial-glow">
         <div className="container-px">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-4xl text-center flex flex-col items-center">
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="font-display font-extrabold text-4xl sm:text-5xl leading-tight">
               Your Gateway to <span className="text-gradient">Professional Excellence</span>
             </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="mt-8 mb-4 flex justify-center"
+            >
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-full bg-gradient-primary blur-md opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <img
+                  src={sagarUmalkarImg}
+                  alt="Sagar Umalkar"
+                  className="relative w-32 h-32 rounded-full object-cover shadow-xl border-4 border-white dark:border-slate-800 transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 text-lg text-text-secondary leading-relaxed">
               Founded by {brand.founders}, Globe Creater has over {brand.experienceYears} years of experience providing
               top-notch training across various domains — empowering individuals and organizations with the skills they
@@ -44,23 +60,18 @@ export default function About() {
       <section className="section-pad bg-white">
         <div className="container-px">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading eyebrow="Leadership" title="Meet the founders" sub="Two decades of combined industry experience, built into every course." />
-            <StaggerGroup className="mt-12 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto" stagger={0.15}>
-              {[
-                { name: 'Sagar Umalkar', role: 'Co-Founder' },
-                { name: 'Deepak Patil', role: 'Co-Founder' },
-              ].map((f) => (
-                <StaggerItem key={f.name}>
-                  <div className="text-center rounded-3xl border border-slate-100 p-8">
-                    <div className="w-20 h-20 rounded-full bg-gradient-primary flex items-center justify-center text-white font-display font-bold text-xl mx-auto mb-4">
-                      {f.name.split(' ').map((n) => n[0]).join('')}
-                    </div>
-                    <h3 className="font-display font-bold text-lg">{f.name}</h3>
-                    <p className="text-text-secondary text-sm mt-1">{f.role}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
+            <SectionHeading eyebrow="Leadership" title="Meet the founder" sub="Two decades of industry experience, built into every course." />
+            <div className="mt-12 max-w-sm mx-auto">
+              <div className="text-center rounded-3xl border border-slate-100 p-8 bg-white dark:bg-bg-dark/40 shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  src={sagarUmalkarImg}
+                  alt="Sagar Umalkar"
+                  className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-primary/20 shadow-md transition-transform duration-300 hover:scale-105"
+                />
+                <h3 className="font-display font-bold text-lg">Sagar Umalkar</h3>
+                <p className="text-text-secondary text-sm mt-1">Founder</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

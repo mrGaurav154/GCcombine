@@ -13,8 +13,8 @@ const genericCurriculum = [
 ];
 
 const faculty = [
-  { name: 'Sagar Umalkar', role: 'Co-Founder & Lead Trainer', exp: '20+ years industry experience' },
-  { name: 'Deepak Patil', role: 'Co-Founder & Technical Mentor', exp: '20+ years industry experience' },
+  { name: 'Sagar Umalkar', role: 'Founder & Lead Trainer', exp: '20+ years industry experience' },
+  { name: 'Deepak Patil', role: 'Technical Mentor', exp: '20+ years industry experience' },
 ];
 
 export default function CourseDetail() {

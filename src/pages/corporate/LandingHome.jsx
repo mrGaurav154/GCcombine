@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Code, GraduationCap, Users, Star, CheckCircle2, Rocket } from 'lucide-react';
 import SectionHeading from '../../components/shared/SectionHeading';
 import { StaggerGroup, StaggerItem } from '../../components/shared/Reveal';
 import Companies from '../../components/Companies/Companies';
@@ -8,6 +8,7 @@ import { brand, services } from '../../data/siteData';
 import { industries } from '../../data/corporateData';
 import Globe3D from '../../components/shared/Globe3D';
 import { useSplash } from '../../context/SplashContext';
+import sagarUmalkarImg from '../../assets/sagar-umalkar.png';
 
 export default function LandingHome() {
   const { splashFinished } = useSplash();
@@ -141,6 +142,31 @@ export default function LandingHome() {
         </div>
       </section>
 
+      {/* Experience and Team stats bar */}
+      <section className="border-y border-slate-100 bg-slate-50/30 py-5 dark:border-slate-800 dark:bg-bg-dark/30">
+        <div className="container-px">
+          <div className="mx-auto max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium text-text-secondary dark:text-slate-400">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="font-display font-semibold tracking-wide text-text-primary dark:text-white uppercase text-xs">20+ Years of Experience</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+              </span>
+              <span className="font-display font-semibold tracking-wide text-text-primary dark:text-white uppercase text-xs">Team Size: 20-25 Members</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Rotating client marquee */}
+      <Companies title="Our Clients" />
+
       {/* Services teaser */}
       <section className="section-pad bg-white">
         <div className="container-px">
@@ -198,9 +224,6 @@ export default function LandingHome() {
         </div>
       </section>
 
-      {/* Rotating hiring-partner marquee */}
-      <Companies />
-
       {/* Industrial Training CTA */}
       <section className="section-pad bg-white">
         <div className="container-px">
@@ -225,18 +248,85 @@ export default function LandingHome() {
       </section>
 
       {/* About teaser */}
-      <section className="section-pad bg-bg">
-        <div className="container-px">
-          <div className="mx-auto max-w-4xl text-center">
-            <SectionHeading
-              eyebrow="About Us"
-              title={`Founded by ${brand.founders}.`}
-              sub={`Over ${brand.experienceYears} years of combined experience building software and training the people who build it.`}
-            />
-            <div className="mt-8">
-              <Link to="/about" className="inline-flex items-center gap-2 font-semibold text-primary">
-                Learn more about Globe Creater <ArrowRight size={16} />
-              </Link>
+      <section className="section-pad bg-bg-dark text-white relative overflow-hidden">
+        {/* Background glow effects */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <span className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
+          <span className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-secondary/5 blur-3xl" />
+        </div>
+
+        <div className="container-px relative z-10">
+          <div className="mx-auto max-w-5xl rounded-3xl bg-slate-900/60 border border-slate-800/80 p-8 md:p-12 lg:p-14 backdrop-blur-md shadow-2xl">
+            {/* Header (Above both Image and Passage) */}
+            <div className="text-center mb-10 space-y-3">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-slate-350 border border-slate-700 px-4 py-1.5 rounded-full bg-slate-800/40">
+                <Sparkles size={13} className="text-primary animate-pulse" /> ABOUT GLOBE CREATER
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white leading-tight">
+                Founded by <span className="text-gradient">Sagar Umalkar.</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
+              {/* Left Column: Image (clean portrait, no overlay badges) */}
+              <div className="md:col-span-5 flex justify-center pb-6 md:pb-0">
+                <div className="relative w-full max-w-[280px] aspect-[4/5] rounded-3xl shadow-inner">
+                  {/* Glowing border outline */}
+                  <div className="absolute inset-0 rounded-3xl border border-slate-700/30 pointer-events-none z-20" />
+                  <img
+                    src={sagarUmalkarImg}
+                    alt="Sagar Umalkar"
+                    className="w-full h-full object-cover rounded-3xl shadow-xl transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Passage & Center Stats & Buttons */}
+              <div className="md:col-span-7 flex flex-col justify-center h-full space-y-6 text-center">
+                {/* Passage */}
+                <p className="text-slate-350 text-sm sm:text-base leading-relaxed text-justify mx-auto max-w-xl">
+                  Globe Creater was founded with one mission: to bridge the gap between industry and education. 
+                  For over two decades, we have helped businesses build scalable software while mentoring aspiring 
+                  developers into successful professionals.
+                </p>
+
+                {/* Stats and buttons section */}
+                <div className="pt-6 border-t border-slate-800/60 space-y-6">
+                  {/* Stats list aligned in one line in center */}
+                  <div className="flex flex-wrap gap-3 text-xs text-slate-350 justify-center">
+                    <div className="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 px-3 py-1.5 rounded-xl">
+                      <span className="text-amber-500 shrink-0">
+                        <Star size={12} fill="currentColor" />
+                      </span>
+                      <span className="font-semibold whitespace-nowrap">20+ Years Experience</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 px-3 py-1.5 rounded-xl">
+                      <span className="text-emerald-500 shrink-0">
+                        <CheckCircle2 size={12} />
+                      </span>
+                      <span className="font-semibold whitespace-nowrap">500+ Students Trained</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 px-3 py-1.5 rounded-xl">
+                      <span className="text-indigo-500 shrink-0">
+                        <Rocket size={12} />
+                      </span>
+                      <span className="font-semibold whitespace-nowrap">150+ Software Projects</span>
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold bg-gradient-primary hover:opacity-95 transition-opacity text-sm">
+                      Learn More
+                    </Link>
+                    <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-slate-300 font-semibold border border-slate-700 hover:border-slate-500 hover:text-white transition-colors text-sm bg-slate-900/40">
+                      Meet Our Team
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

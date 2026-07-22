@@ -48,14 +48,14 @@ function CompanyWordmark({ name }) {
   );
 }
 
-export default function Companies() {
+export default function Companies({ title = "Our Hiring Partners" }) {
   const list = [...hiringPartners, ...hiringPartners];
   return (
     <section className="section-pad !pt-0">
       <div className="container-px">
         <Reveal>
           <p className="text-center text-sm font-semibold tracking-widest uppercase text-text-secondary mb-8">
-            Our Hiring Partners
+            {title}
           </p>
         </Reveal>
         <div className="relative overflow-hidden mx-auto max-w-6xl">
