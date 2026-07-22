@@ -1,3 +1,5 @@
+import companyLogo from '../../assets/logo.png';
+
 const LONGITUDE_STEPS = [0, 30, 60, 90, 120, 150];
 const LATITUDE_RINGS = [
   { translateZ: 0, scale: 1 },
@@ -24,13 +26,27 @@ export default function Globe3D({ className = '' }) {
           }}
         />
       ))}
-      <div className="globe-core" />
-      <div className="globe-logo-badge">
-        <span className="mark">GC</span>
+      
+      {/* Double-sided 3D logo disc inside the globe structure */}
+      <div className="globe-logo-disc">
+        <div 
+          className="globe-logo-face front"
+          style={{ backgroundImage: `url(${companyLogo})` }}
+        >
+          <div className="globe-logo-shine" />
+        </div>
+        <div 
+          className="globe-logo-face back"
+          style={{ backgroundImage: `url(${companyLogo})` }}
+        >
+          <div className="globe-logo-shine" />
+        </div>
       </div>
+
       <div className="orbit-ring">
         <span className="orbit-dot" />
       </div>
     </div>
   );
 }
+

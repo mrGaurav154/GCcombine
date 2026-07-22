@@ -68,16 +68,35 @@
   to { transform: rotateY(360deg) rotateX(-8deg); }
 }
 
-.globe-core {
+.globe-logo-disc {
   position: absolute;
-  inset: 15%;
+  inset: 12%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #5b98ff 0%, #2563EB 38%, #1a3d99 70%, #0b1b4a 100%);
-  box-shadow:
-    0 0 46px 8px rgba(37,99,235,0.55),
-    0 0 100px 24px rgba(124,58,237,0.35),
-    inset -14px -14px 30px rgba(0,0,0,0.45),
-    inset 10px 10px 24px rgba(255,255,255,0.18);
+  transform-style: preserve-3d;
+  transform: translateZ(0px);
+}
+
+.globe-logo-face {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  backface-visibility: hidden;
+  filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.5)) drop-shadow(0 0 24px rgba(124, 58, 237, 0.25));
+}
+
+.globe-logo-face.front {
+  transform: rotateY(0deg);
+}
+
+.globe-logo-face.back {
+  transform: rotateY(180deg);
+}
+
+.globe-logo-shine {
+  display: none;
 }
 
 .globe-ring {
@@ -89,31 +108,6 @@
 
 .globe-ring.lat {
   border-color: rgba(6, 182, 212, 0.42);
-}
-
-.globe-logo-badge {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateZ(76px);
-}
-
-.globe-logo-badge .mark {
-  width: 70px;
-  height: 70px;
-  border-radius: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-  box-shadow: 0 12px 34px rgba(37, 99, 235, 0.55), 0 0 0 6px rgba(255,255,255,0.08);
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: 1.7rem;
-  color: white;
-  letter-spacing: 0.5px;
 }
 
 .orbit-ring {
@@ -129,8 +123,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #06B6D4;
-  box-shadow: 0 0 14px 3px rgba(6,182,212,0.85);
+  background: #FF5722;
+  box-shadow: 0 0 14px 4px rgba(255, 87, 34, 0.95);
   top: 50%;
   left: 50%;
   transform-origin: 0 0;
