@@ -136,26 +136,26 @@ export default function LandingHome() {
                   <Globe3D />
                 </div>
 
-                {/* Floating stats card on outer right side of 3D globe */}
+                {/* Floating stats card touching outer right side of 3D globe */}
                 <motion.div 
                   initial={{ opacity: 0, x: 25 }}
                   animate={splashFinished ? { opacity: 1, x: 0 } : { opacity: 0, x: 25 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -right-4 sm:-right-8 lg:-right-14 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-xl border border-white/80 rounded-3xl shadow-2xl shadow-slate-900/10 p-5 sm:p-6 w-[160px] sm:w-[185px] space-y-4 text-center z-20 pointer-events-auto"
+                  className="absolute -right-6 sm:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-md border border-white/60 rounded-3xl shadow-xl shadow-slate-900/5 p-5 sm:p-6 w-[160px] sm:w-[185px] space-y-4 text-center z-20 pointer-events-auto"
                 >
                   <div>
                     <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">100+</div>
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Enterprise Clients</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider mt-1">Enterprise Clients</div>
                   </div>
-                  <div className="h-[1px] bg-slate-200/70 w-3/4 mx-auto" />
+                  <div className="h-[1px] bg-slate-900/10 w-3/4 mx-auto" />
                   <div>
                     <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">5+</div>
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Projects</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider mt-1">Projects</div>
                   </div>
-                  <div className="h-[1px] bg-slate-200/70 w-3/4 mx-auto" />
+                  <div className="h-[1px] bg-slate-900/10 w-3/4 mx-auto" />
                   <div>
                     <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">2+</div>
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Years Experience</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider mt-1">Years Experience</div>
                   </div>
                 </motion.div>
               </div>
