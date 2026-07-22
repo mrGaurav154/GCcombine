@@ -12,8 +12,8 @@ import sagarUmalkarImg from '../../assets/sagar-umalkar.png';
 
 export default function LandingHome() {
   const { splashFinished } = useSplash();
-  const titlePart1 = "We build software,";
-  const titlePart2 = "and the engineers behind it.";
+  const titlePart1 = "We Build Software,";
+  const titlePart2 = "And The Engineers Behind It.";
 
   const sentenceVariants = {
     hidden: {},
@@ -30,11 +30,11 @@ export default function LandingHome() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 200,
         damping: 15,
-        duration: 0.15 
+        duration: 0.15
       }
     }
   };
@@ -58,7 +58,6 @@ export default function LandingHome() {
                 transition={{ duration: 0.6 }}
                 className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6"
               >
-                <Sparkles size={14} /> Software Studio &middot; IT Training Institute
               </motion.div>
 
               <motion.h1
@@ -129,37 +128,38 @@ export default function LandingHome() {
               transition={{ duration: 2.0, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
               className="absolute inset-0 lg:relative lg:inset-auto flex justify-center items-center pointer-events-none lg:pointer-events-auto z-0 lg:z-10 lg:col-span-5 select-none"
             >
-              <div className="opacity-15 lg:opacity-100 transition-opacity duration-300">
-                <div 
-                  className="w-[345px] h-[345px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300" 
+              <div className="opacity-15 lg:opacity-100 transition-opacity duration-300 relative flex items-center justify-center">
+                <div
+                  className="w-[345px] h-[345px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300"
                   style={{ perspective: '1100px' }}
                 >
                   <Globe3D />
                 </div>
+
+                {/* Floating stats card on outer right side of 3D globe */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 25 }}
+                  animate={splashFinished ? { opacity: 1, x: 0 } : { opacity: 0, x: 25 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="absolute -right-4 sm:-right-8 lg:-right-14 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-xl border border-white/80 rounded-3xl shadow-2xl shadow-slate-900/10 p-5 sm:p-6 w-[160px] sm:w-[185px] space-y-4 text-center z-20 pointer-events-auto"
+                >
+                  <div>
+                    <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">100+</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Enterprise Clients</div>
+                  </div>
+                  <div className="h-[1px] bg-slate-200/70 w-3/4 mx-auto" />
+                  <div>
+                    <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">5+</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Projects</div>
+                  </div>
+                  <div className="h-[1px] bg-slate-200/70 w-3/4 mx-auto" />
+                  <div>
+                    <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">2+</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Years Experience</div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience and Team stats bar */}
-      <section className="border-y border-slate-100 bg-slate-50/30 py-5 dark:border-slate-800 dark:bg-bg-dark/30">
-        <div className="container-px">
-          <div className="mx-auto max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium text-text-secondary dark:text-slate-400">
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              <span className="font-display font-semibold tracking-wide text-text-primary dark:text-white uppercase text-xs">20+ Years of Experience</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
-              </span>
-              <span className="font-display font-semibold tracking-wide text-text-primary dark:text-white uppercase text-xs">Team Size: 20-25 Members</span>
-            </div>
           </div>
         </div>
       </section>
@@ -268,7 +268,7 @@ export default function LandingHome() {
             </div>
 
             <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
+
               {/* Left Column: Image (clean portrait, no overlay badges) */}
               <div className="md:col-span-5 flex justify-center pb-6 md:pb-0">
                 <div className="relative w-full max-w-[280px] aspect-[4/5] rounded-3xl shadow-inner">
@@ -286,8 +286,8 @@ export default function LandingHome() {
               <div className="md:col-span-7 flex flex-col justify-center h-full space-y-6 text-center">
                 {/* Passage */}
                 <p className="text-slate-350 text-sm sm:text-base leading-relaxed text-justify mx-auto max-w-xl">
-                  Globe Creater was founded with one mission: to bridge the gap between industry and education. 
-                  For over two decades, we have helped businesses build scalable software while mentoring aspiring 
+                  Globe Creater was founded with one mission: to bridge the gap between industry and education.
+                  For over two decades, we have helped businesses build scalable software while mentoring aspiring
                   developers into successful professionals.
                 </p>
 
