@@ -129,19 +129,12 @@ export default function LandingHome() {
               className="absolute inset-0 lg:relative lg:inset-auto flex justify-center items-center pointer-events-none lg:pointer-events-auto z-0 lg:z-10 lg:col-span-5 select-none"
             >
               <div className="opacity-15 lg:opacity-100 transition-opacity duration-300 relative flex items-center justify-center">
-                <div
-                  className="w-[345px] h-[345px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300"
-                  style={{ perspective: '1100px' }}
-                >
-                  <Globe3D />
-                </div>
-
-                {/* Floating stats card touching outer right side of 3D globe */}
+                {/* Floating stats card placed BEHIND the 3D globe on the right */}
                 <motion.div 
-                  initial={{ opacity: 0, x: 25 }}
-                  animate={splashFinished ? { opacity: 1, x: 0 } : { opacity: 0, x: 25 }}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={splashFinished ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -right-6 sm:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-md border border-white/60 rounded-3xl shadow-xl shadow-slate-900/5 p-5 sm:p-6 w-[160px] sm:w-[185px] space-y-4 text-center z-20 pointer-events-auto"
+                  className="absolute right-[-30px] sm:right-[-60px] lg:right-[-90px] top-1/2 -translate-y-1/2 bg-white/30 backdrop-blur-md border border-white/60 rounded-3xl shadow-xl shadow-slate-900/5 p-5 sm:p-6 w-[160px] sm:w-[185px] space-y-4 text-center z-0 pointer-events-auto"
                 >
                   <div>
                     <div className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">100+</div>
@@ -158,6 +151,14 @@ export default function LandingHome() {
                     <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider mt-1">Years Experience</div>
                   </div>
                 </motion.div>
+
+                {/* 3D Globe rendered IN FRONT of the card */}
+                <div
+                  className="w-[345px] h-[345px] md:scale-110 lg:scale-125 xl:scale-135 transition-all duration-300 relative z-10 pointer-events-none"
+                  style={{ perspective: '1100px' }}
+                >
+                  <Globe3D />
+                </div>
               </div>
             </motion.div>
           </div>
