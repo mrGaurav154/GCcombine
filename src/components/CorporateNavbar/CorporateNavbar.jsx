@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, GraduationCap, Briefcase } from 'lucide-react';
+import { Menu, X, ChevronDown, GraduationCap } from 'lucide-react';
 import LogoBadge from '../shared/LogoBadge';
 import { industries } from '../../data/corporateData';
 
@@ -24,7 +24,7 @@ function Dropdown({ label, open, setOpen, width = 'w-72', children }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 ${width} glass rounded-2xl shadow-2xl p-3`}
+            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 ${width} bg-white rounded-2xl shadow-2xl border border-slate-200 p-3`}
           >
             {children}
           </motion.div>
@@ -49,26 +49,35 @@ export default function CorporateNavbar() {
   }, []);
 
   const navLinkClass = ({ isActive }) =>
-    `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive ? 'text-primary' : 'text-text-primary hover:text-primary'
+    `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+      isActive ? 'text-primary' : 'text-text-primary hover:text-primary'
     }`;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-2' : 'py-4'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'py-2' : 'py-4'
+      }`}
     >
       <div className="container-px">
         <div
-          className={`mx-auto w-full max-w-7xl lg:w-fit flex items-center justify-between lg:justify-start gap-4 lg:gap-8 rounded-2xl transition-all duration-500 ${scrolled
-            ? 'glass shadow-lg shadow-black/5 px-5 py-2'
-            : 'bg-white/70 backdrop-blur-sm border border-white/40 px-4 py-1.5 shadow-sm shadow-black/5'
-            }`}
+          className={`mx-auto max-w-7xl flex items-center justify-between rounded-2xl transition-all duration-500 ${
+            scrolled
+              ? 'glass shadow-lg shadow-black/5 px-5 py-2.5'
+              : 'bg-white/70 backdrop-blur-sm border border-white/40 px-4 py-2 shadow-sm shadow-black/5'
+          }`}
         >
-          <Link to="/" className="flex items-center gap-2 font-display font-extrabold text-xl shrink-0">
-            <LogoBadge />
-          </Link>
+         
+         <div className="flex items-center gap-12">
+         <Link to="/" className="shrink-0 flex items-center">
+          <img
+          src="/logo-01.png"
+          alt="Globe Creater"
+          className="h-16 w-auto object-contain transition-all duration-300"
+          />
+         </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-8">
             <NavLink to="/" end className={navLinkClass}>Home</NavLink>
             <NavLink to="/services" className={navLinkClass}>Services</NavLink>
 
@@ -90,16 +99,9 @@ export default function CorporateNavbar() {
               })}
             </Dropdown>
 
+            <NavLink to="/about/career" className={navLinkClass}>Career</NavLink>
+
             <Dropdown label="About Us" open={aboutOpen} setOpen={setAboutOpen} width="w-64">
-              <Link to="/about/career" className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-colors">
-                <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <Briefcase size={16} className="text-primary" />
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold text-text-primary">Career</span>
-                  <span className="block text-xs text-text-secondary">Join our team</span>
-                </span>
-              </Link>
               <Link to="/industrial-training" className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-colors">
                 <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <GraduationCap size={16} className="text-primary" />
@@ -116,8 +118,9 @@ export default function CorporateNavbar() {
 
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
           </nav>
+          </div>
 
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="hidden lg:flex items-center gap-3">
             {/* <Link to="/contact" className="px-4 py-2 rounded-lg text-sm font-semibold text-primary border border-primary/30 hover:bg-primary/5 transition-colors">
               Get in Touch
             </Link> */}
@@ -158,8 +161,8 @@ export default function CorporateNavbar() {
                 ['Home', '/'],
                 ['Services', '/services'],
                 ['Industries', '/industries'],
-                ['About Us', '/about'],
                 ['Career', '/about/career'],
+                ['About Us', '/about'],
                 ['Industrial Training', '/industrial-training'],
                 ['Contact', '/contact'],
               ].map(([label, href]) => (

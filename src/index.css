@@ -78,6 +78,34 @@ h1, h2, h3, h4, h5, .font-display { font-family: var(--font-display); }
 .card-hover { transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
 .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -12px rgba(37,99,235,0.25); }
 
+/* Per-card accent color, set inline via style={{ '--accent': '#hex' }}.
+   Lets a grid of cards each light up with a different brand color on hover
+   instead of all sharing the same primary blue. */
+.accent-card {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease, background-color .35s ease;
+}
+.accent-card:hover,
+.accent-card:active {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background-color: color-mix(in srgb, var(--accent) 5%, white);
+  box-shadow: 0 24px 48px -14px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.accent-icon {
+  background-color: color-mix(in srgb, var(--accent) 12%, white);
+  color: var(--accent);
+  transition: background-color .35s ease, color .35s ease, transform .35s ease;
+}
+.accent-card:hover .accent-icon,
+.accent-card:active .accent-icon {
+  background-color: var(--accent);
+  color: white;
+  transform: scale(1.08) rotate(-4deg);
+}
+.accent-title { transition: color .35s ease; }
+.accent-card:hover .accent-title,
+.accent-card:active .accent-title { color: var(--accent); }
+
 .btn-glow { box-shadow: 0 0 0 0 rgba(37,99,235,0.6); transition: box-shadow .3s ease, transform .3s ease; }
 .btn-glow:hover { box-shadow: 0 8px 30px rgba(37,99,235,0.45); transform: translateY(-2px); }
 
@@ -85,8 +113,71 @@ h1, h2, h3, h4, h5, .font-display { font-family: var(--font-display); }
 .marquee-track:hover { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* Client logo marquee: grayscale by default, full color only in a band
+   through the middle of the strip, so each logo "lights up" as it passes
+   through center — like scatterpie.io's client strip. */
+.clients-gray-layer { filter: grayscale(1) opacity(0.5); }
+.clients-color-layer {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 34%,
+    black 46%,
+    black 54%,
+    transparent 66%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 34%,
+    black 46%,
+    black 54%,
+    transparent 66%,
+    transparent 100%
+  );
+}
+
 @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
 .animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Industry tiles: flat gray by default, fill with a per-card accent color
+   on hover, text flips to white and a "Learn More" CTA fades in. */
+.industry-tile {
+  background-color: #F1F5F9;
+  transition: background-color .4s ease, transform .4s ease, box-shadow .4s ease;
+}
+.industry-tile:hover,
+.industry-tile:focus-visible {
+  background-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -16px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.industry-tile-icon {
+  background-color: #fff;
+  color: var(--accent);
+  transition: transform .4s ease;
+}
+.industry-tile:hover .industry-tile-icon { transform: scale(1.06); }
+.industry-tile-title { color: var(--color-text-primary); transition: color .35s ease; }
+.industry-tile:hover .industry-tile-title { color: #fff; }
+.industry-tile-desc { color: var(--color-text-secondary); transition: color .35s ease; }
+.industry-tile:hover .industry-tile-desc { color: rgba(255,255,255,0.88); }
+.industry-tile-cta {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s ease, max-height .35s ease, margin-top .35s ease;
+  margin-top: 0;
+  overflow: hidden;
+}
+.industry-tile:hover .industry-tile-cta,
+.industry-tile:focus-visible .industry-tile-cta {
+  opacity: 1;
+  max-height: 60px;
+  margin-top: 1.25rem;
+  transform: translateY(0);
+}
 
 @keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-22px); } }
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }

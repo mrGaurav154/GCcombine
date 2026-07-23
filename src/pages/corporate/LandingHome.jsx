@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Code, GraduationCap, Users, Star, CheckCircle2, Rocket } from 'lucide-react';
+import { ArrowRight, Sparkles, Code, GraduationCap, Users, Star, CheckCircle2, Rocket, Code2, Smartphone, BrainCircuit, Cloud, Database, PenTool, Megaphone, Headset } from 'lucide-react';
 import SectionHeading from '../../components/shared/SectionHeading';
 import { StaggerGroup, StaggerItem } from '../../components/shared/Reveal';
 import Companies from '../../components/Companies/Companies';
@@ -9,6 +9,14 @@ import { industries } from '../../data/corporateData';
 import Globe3D from '../../components/shared/Globe3D';
 import { useSplash } from '../../context/SplashContext';
 import sagarUmalkarImg from '../../assets/sagar-umalkar.png';
+
+// One icon per service, in the same order as `services` in siteData.js.
+const serviceIcons = [Code2, Smartphone, BrainCircuit, Cloud, Database, PenTool, Megaphone, Headset];
+
+// Cycled per card so the hover state isn't the same color on every tile —
+// same brand palette used across the site (primary/secondary/accent/success)
+// plus a few complementary tones for variety.
+const accentColors = ['#2563EB', '#7C3AED', '#06B6D4', '#10B981', '#F59E0B', '#F43F5E', '#6366F1', '#EC4899', '#14B8A6'];
 
 export default function LandingHome() {
   const { splashFinished } = useSplash();
@@ -169,8 +177,10 @@ export default function LandingHome() {
       <Companies title="Our Clients" />
 
       {/* Services teaser */}
-      <section className="section-pad bg-white">
-        <div className="container-px">
+      <section className="relative overflow-hidden section-pad bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl"></div>
+        <div className="container-px relative z-10">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               eyebrow="What We Do"
@@ -178,14 +188,24 @@ export default function LandingHome() {
               sub="From product engineering to cloud and AI, we work as an extension of your team."
             />
             <StaggerGroup className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5" stagger={0.08}>
-              {services.slice(0, 8).map((s) => (
-                <StaggerItem key={s.title}>
-                  <div className="card-hover h-full rounded-2xl border border-slate-100 bg-bg p-6">
-                    <h3 className="font-display font-semibold text-text-primary text-base mb-2">{s.title}</h3>
-                    <p className="text-text-secondary text-sm leading-relaxed">{s.desc}</p>
-                  </div>
-                </StaggerItem>
-              ))}
+              {services.slice(0, 8).map((s, i) => {
+                const Icon = serviceIcons[i] || serviceIcons[0];
+                const accent = accentColors[i % accentColors.length];
+                return (
+                  <StaggerItem key={s.title}>
+                    <div
+                      className="accent-card h-full rounded-2xl border border-slate-100 bg-white p-6"
+                      style={{ '--accent': accent }}
+                    >
+                      <div className="accent-icon w-10 h-10 rounded-lg flex items-center justify-center mb-4">
+                        <Icon size={18} />
+                      </div>
+                      <h3 className="accent-title font-display font-semibold text-text-primary text-base mb-2">{s.title}</h3>
+                      <p className="text-text-secondary text-sm leading-relaxed">{s.desc}</p>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
             </StaggerGroup>
             <div className="mt-10 text-center">
               <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-primary">
@@ -197,25 +217,35 @@ export default function LandingHome() {
       </section>
 
       {/* Industries teaser */}
-      <section className="section-pad bg-bg">
-        <div className="container-px">
+      <section className="relative overflow-hidden section-pad bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"></div>
+        <div className="container-px relative z-10">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               eyebrow="Industries"
               title="Domain experience that matters."
               sub="We've delivered software across these industries — and know the workflows that come with them."
             />
-            <StaggerGroup className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.1}>
-              {industries.map((ind) => {
+            <StaggerGroup className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5" stagger={0.1}>
+              {industries.map((ind, i) => {
                 const Icon = ind.icon;
+                const accent = accentColors[i % accentColors.length];
                 return (
                   <StaggerItem key={ind.title}>
-                    <Link to="/industries" className="card-hover h-full block rounded-2xl border border-slate-100 bg-white p-7">
-                      <span className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                        <Icon size={22} className="text-primary" />
+                    <Link
+                      to="/industries"
+                      className="industry-tile h-full block rounded-2xl p-7"
+                      style={{ '--accent': accent }}
+                    >
+                      <span className="industry-tile-icon w-12 h-12 rounded-full flex items-center justify-center mb-5">
+                        <Icon size={22} />
                       </span>
-                      <h3 className="font-display font-semibold text-text-primary text-base mb-2">{ind.title}</h3>
-                      <p className="text-text-secondary text-sm leading-relaxed">{ind.desc}</p>
+                      <h3 className="industry-tile-title font-display font-semibold text-base mb-2">{ind.title}</h3>
+                      <p className="industry-tile-desc text-sm leading-relaxed">{ind.desc}</p>
+                      <span className="industry-tile-cta inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary">
+                        Learn More <ArrowRight size={15} />
+                      </span>
                     </Link>
                   </StaggerItem>
                 );

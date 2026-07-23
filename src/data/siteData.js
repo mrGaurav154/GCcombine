@@ -142,14 +142,42 @@ export const whyChooseUs = [
 ];
 
 export const services = [
-  { title: 'Web Development', desc: 'Modern, scalable websites and web apps built on production-grade stacks.' },
-  { title: 'Mobile Apps', desc: 'Cross-platform Android & iOS apps engineered for performance.' },
-  { title: 'AI Solutions', desc: 'Applied AI features — recommendation engines, chatbots, automation.' },
-  { title: 'Cloud & DevOps', desc: 'Cloud architecture, CI/CD pipelines and infrastructure automation.' },
-  { title: 'ERP & CRM', desc: 'Custom enterprise systems tailored to your operations.' },
-  { title: 'UI/UX Design', desc: 'Research-driven interface design that converts and retains.' },
-  { title: 'Digital Marketing', desc: 'SEO, paid media and growth marketing for measurable ROI.' },
-  { title: 'IT Consulting', desc: 'Technology strategy and architecture guidance for growing teams.' },
+  {
+    title: 'Web Development',
+    desc: 'Custom, responsive, and scalable websites and web applications built using modern technologies.'
+  },
+  {
+    title: 'Mobile App Development',
+    desc: 'High-performance Android and iOS applications with intuitive user experiences and cross-platform support.'
+  },
+  {
+    title: 'AI & Machine Learning',
+    desc: 'Intelligent AI-powered solutions, automation, predictive analytics, and custom machine learning models.'
+  },
+  {
+    title: 'Data Science & Analytics',
+    desc: 'Transform data into actionable insights through advanced analytics, visualization, and business intelligence.'
+  },
+  {
+    title: 'Cloud & DevOps',
+    desc: 'Cloud infrastructure, CI/CD pipelines, containerization, and DevOps solutions for faster deployment.'
+  },
+  {
+    title: 'ERP & CRM',
+    desc: 'Customized ERP and CRM systems to streamline business operations, customer management, and productivity.'
+  },
+  {
+    title: 'Cybersecurity',
+    desc: 'Comprehensive cybersecurity solutions including risk assessment, network security, and data protection.'
+  },
+  {
+    title: 'IT Consulting',
+    desc: 'Strategic technology consulting, digital transformation, and IT roadmap planning for business growth.'
+  },
+  {
+    title: 'Industrial Training',
+    desc: 'Industry-focused training programs with hands-on projects, expert mentorship, and placement assistance.'
+  },
 ];
 
 export const testimonials = [

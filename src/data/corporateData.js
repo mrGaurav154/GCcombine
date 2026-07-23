@@ -2,38 +2,43 @@
 // Contact) — the layer that sits in front of the Industrial Training sub-site.
 // Industry categories are modeled on enterprise IT-consulting sites (e.g.
 // jadeglobal.com) and adapted to Globe Creater's own service lines.
-import { Cpu, HeartPulse, Factory, Landmark, Building2 } from 'lucide-react';
+import { Cpu, HeartPulse, GraduationCap, Factory, Landmark, Rocket, Code2, Users } from 'lucide-react';
 
 export const industries = [
   {
     icon: Cpu,
-    title: 'High Tech',
-    desc: 'Product engineering, cloud platforms and AI-enabled features for software & hardware companies.',
+    title: 'Information Technology',
+    desc: 'Custom software development, cloud solutions, AI integration, web and mobile application development.',
   },
   {
     icon: HeartPulse,
-    title: 'Life Sciences and Healthcare',
-    desc: 'Secure, compliant systems for healthcare providers, diagnostics and life-sciences platforms.',
+    title: 'Healthcare & Life Sciences',
+    desc: 'HIPAA-compliant healthcare applications, hospital management systems, telemedicine, and healthcare analytics.',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Education & E-Learning',
+    desc: 'Learning Management Systems (LMS), e-learning platforms, virtual classrooms, and educational portals.',
   },
   {
     icon: Factory,
     title: 'Manufacturing',
-    desc: 'ERP integrations, IoT dashboards and process automation for manufacturing operations.',
+    desc: 'ERP solutions, production monitoring, IoT integration, inventory management, and process automation.',
   },
   {
     icon: Landmark,
-    title: 'Financial Services & Insurance',
-    desc: 'Secure, scalable applications for banking, insurance and fintech workflows.',
+    title: 'Banking & Finance',
+    desc: 'Secure banking software, fintech solutions, digital payments, financial analytics, and compliance systems.',
   },
   {
-    icon: Building2,
-    title: 'Government Public Sector',
-    desc: 'Citizen-facing portals and internal systems built for reliability and accessibility.',
+    icon: Rocket,
+    title: 'Startups & Enterprises',
+    desc: 'Scalable digital products, MVP development, enterprise applications, cloud migration, and business automation.',
   },
 ];
 
 export const careerHighlights = [
-  { title: 'Trainer & Mentor Roles', desc: 'Teach live cohorts across Full Stack, Data Science, DevOps & more.' },
-  { title: 'Software Engineering', desc: 'Build real client software alongside our delivery team.' },
-  { title: 'Placement & Operations', desc: 'Help run admissions, placements and student success.' },
+  { icon: GraduationCap, title: 'Trainer & Mentor Roles', desc: 'Teach live cohorts across Full Stack, Data Science, DevOps & more.' },
+  { icon: Code2, title: 'Software Engineering', desc: 'Build real client software alongside our delivery team.' },
+  { icon: Users, title: 'Placement & Operations', desc: 'Help run admissions, placements and student success.' },
 ];
